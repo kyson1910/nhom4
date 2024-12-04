@@ -3,72 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4 Boxes with Title</title>
+    <title>Đại Dương Huyền Bí</title>
     <style>
-        body {
+        /* Reset style cho tất cả các phần tử */
+        * {
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            box-sizing: border-box;
+        }
+
+        /* Thiết lập chiều cao cho body và html */
+        body, html {
+            height: 100%;
             font-family: Arial, sans-serif;
-            color: #333;
-            overflow: hidden; /* Để tránh cuộn */
         }
 
-        h1 {
-            font-size: 2em;
-            margin-bottom: 20px; /* Tạo khoảng cách giữa tiêu đề và các ô */
-            color: #4CAF50;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px; /* Tăng khoảng cách giữa các ô */
-        }
-
-        a {
-            text-decoration: none; /* Xóa gạch chân */
-        }
-
-        .box {
-            width: 200px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.8); /* Hộp màu trắng trong suốt */
-            color: #333;
-            font-weight: bold;
+        /* Background đại dương */
+        body {
+            background: linear-gradient(to bottom, #00aaff, #006994); /* Gradient màu xanh đại dương */
+            background-size: 100% 200%;
+            animation: oceanAnimation 20s ease-in-out infinite; /* Hiệu ứng chuyển động của nền */
             display: flex;
             justify-content: center;
             align-items: center;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s, background 0.2s;
             text-align: center;
-            cursor: pointer;
+            overflow: hidden;
+            position: relative;
         }
 
-        .box:hover {
-            background: rgba(255, 255, 255, 1); /* Hiệu ứng sáng hơn khi hover */
-            transform: scale(1.1); /* Phóng to nhẹ khi hover */
+        /* Animation nền đại dương */
+        @keyframes oceanAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
+
+        /* Tiêu đề của trang */
+        h1 {
+            font-size: 60px;
+            color: white;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            animation: bounce 2s infinite alternate;
+            z-index: 2;
+        }
+
+        /* Hiệu ứng bounce cho tiêu đề */
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
+
+        /* Các yếu tố sinh vật biển (sứa, cá, san hô) */
+        .sea-life {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        /* Hiệu ứng chuyển động cho cá */
+        .fish {
+            position: absolute;
+            width: 100px;
+            height: auto;
+            animation: swim 5s linear infinite;
+        }
+
+        /* Hiệu ứng bơi cho cá */
+        @keyframes swim {
+            0% { transform: translateX(-200px) translateY(0); opacity: 1; }
+            50% { transform: translateX(200px) translateY(30px); opacity: 1; }
+            100% { transform: translateX(-200px) translateY(0); opacity: 1; }
+        }
+
+        /* Hiệu ứng chuyển động cho sứa */
+        .jellyfish {
+            position: absolute;
+            width: 200px;
+            height: auto;
+            animation: jellyfishMove 10s ease-in-out infinite;
+        }
+
+        /* Hiệu ứng chuyển động lên xuống cho sứa */
+        @keyframes jellyfishMove {
+            0% { transform: translateY(0); opacity: 0.8; }
+            50% { transform: translateY(50px); opacity: 1; }
+            100% { transform: translateY(0); opacity: 0.8; }
+        }
+
+        /* Hiệu ứng cho san hô */
+        .coral {
+            position: absolute;
+            width: 150px;
+            height: auto;
+            bottom: 0;
+            opacity: 0,75;
+            z-index: 1;
+        }
+
+        /* Các hình ảnh của san hô sẽ được đặt ở đáy */
+        .coral1 {
+            left: 3%;
+			width:500px;
+			height:auto;
+            animation: coralAnimation1 8s ease-in-out infinite;
+        }
+
+        .coral2 {
+            left: 70%;
+            animation: coralAnimation2 8s ease-in-out infinite;
+        }
+
+        .coral3 {
+            left: 40%;
+            animation: coralAnimation3 8s ease-in-out infinite;
+        }
+
+        /* Animation cho san hô */
+        @keyframes coralAnimation1 {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes coralAnimation2 {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes coralAnimation3 {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+		.container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px; /* Khoảng cách giữa các khung */
+        }
+
+        /* Style chung cho các khung lựa chọn */
+        .choice-box {
+            width: 200px;
+            height: 200px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Hiệu ứng hover cho các khung lựa chọn */
+        .choice-box:hover {
+            transform: scale(1.05); /* Tăng kích thước khi hover */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Các hình ảnh nền cho khung lựa chọn */
+        .choice-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Style cho tiêu đề trong mỗi khung */
+        .choice-box .title {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+			color: #333366;
+        }
+
+        /* Khung lựa chọn 1 */
+        .choice-box-1 {
+            background-image: url('gn.png');
+            background-size: cover;
+        }
+
+        /* Khung lựa chọn 2 */
+        .choice-box-2 {
+            background-image: url('ctk.png');
+            background-size: cover;
+        }
+
+        /* Khung lựa chọn 3 */
+        .choice-box-3 {
+            background-image: url('th.png');
+            background-size: cover;
+        }
+
+        /* Khung lựa chọn 4 */
+        .choice-box-4 {
+            background-image: url('ks.png');
+            background-size: cover;
+        }
+
     </style>
 </head>
 <body>
+
  
-    <h1>THÔNG TIN THÀNH VIÊN NHÓM 4</h1>
-    
-   
-    <div class="container">
-        <a href="tt1.html"><div class="box">Tường Huy</div></a>
-        <a href="tt2.html"><div class="box">Tiền Khang</div></a>
-        <a href="tt3.html"><div class="box">Gia Nghi</div></a>
-        <a href="tt4.html"><div class="box">Kỳ Sơn</div></a>
+
+    <!-- Các sinh vật biển -->
+    <div class="sea-life">
+        <!-- Hình ảnh cá bơi -->
+        <img src="ca1.png" alt="Fish" class="fish" style="top: 20%; left: 10%; animation-delay: 0s;">
+        <img src="ca2.png" alt="Fish" class="fish" style="top: 30%; left: 40%; animation-delay: 2s;">
+        <img src="ca3.png" alt="Fish" class="fish" style="top: 50%; left: 60%; animation-delay: 4s;">
+        
+        <!-- Hình ảnh sứa -->
+        <img src="sua1.png" alt="Jellyfish" class="jellyfish" style="top: 10%; left: 20%; animation-delay: 1s;">
+        <img src="sua2.png" alt="Jellyfish" class="jellyfish" style="top: 40%; left: 70%; animation-delay: 3s;">
+
+        <!-- Hình ảnh san hô -->
+        <img src="sanho.png" alt="Coral1" class="coral coral1">
+        <img src="sao.png" alt="Coral2" class="coral coral2">
+        <img src="tao.png" alt="Coral3" class="coral coral3">
     </div>
+	<div class="container">
+        <a href="tt3.html">
+		<div class="choice-box choice-box-1">
+            <div class="title">Gia Nghi</div>
+        </div>
+		</a>
+		<a href="tt2.html">
+        <div class="choice-box choice-box-2">
+            <div class="title">Tiền Khang</div>
+        </div>
+		</a>
+		<a href="tt1.html">
+        <div class="choice-box choice-box-3">
+            <div class="title">Tường Huy</div>
+        </div>
+		</a>
+		<a href="tt4.html">
+        <div class="choice-box choice-box-4">
+            <div class="title">Kỳ Sơn</div>
+        </div>
+		</a>
+    </div>
+
 </body>
 </html>
